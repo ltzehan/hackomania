@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:translationZ="12dp">
+
+        <qihaoooooo.kyoho.view.SquareImageView
+            android:id="@+id/userIcon"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/placeholder"/>
+
+        <LinearLayout
+            android:id="@+id/barLabels"
+            android:layout_width="wrap_content"
+            android:layout_height="96dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="6dp"
+            android:orientation="vertical"
+            android:gravity="right"
+            android:layout_toEndOf="@id/userIcon">
+
+            <qihaoooooo.kyoho.view.ValueBarTextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Health"/>
+
+            <qihaoooooo.kyoho.view.ValueBarTextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Attack"/>
+
+            <qihaoooooo.kyoho.view.ValueBarTextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="EXP"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:orientation="vertical"
+            android:layout_toEndOf="@id/barLabels">
+
+            <qihaoooooo.kyoho.view.ValueBar
+                android:id="@+id/healthBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"/>
+
+            <qihaoooooo.kyoho.view.ValueBar
+                android:id="@+id/attackBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"/>
+
+            <qihaoooooo.kyoho.view.ValueBar
+                android:id="@+id/expBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
