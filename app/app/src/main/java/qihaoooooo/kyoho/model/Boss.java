@@ -1,15 +1,25 @@
 package qihaoooooo.kyoho.model;
 
 public class Boss {
-
     private int health;
     private int maxHealth;
     private int expValue;
+    private boolean alive;
     private String name;
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
 
     public int getHealth() {
         return health;
     }
+
+    public void decrementHealth() {this.health--;}
 
     public void setHealth(int health) {
         this.health = health;
@@ -19,7 +29,7 @@ public class Boss {
         return maxHealth;
     }
 
-    public void setMaxhealth(int maxHealth) {
+    public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
 
@@ -40,6 +50,7 @@ public class Boss {
     }
 
     public Boss(String name, int maxHealth, int expValue){
+        this.alive = true;
         this.name = name;
         this.maxHealth = maxHealth;
         this.health = maxHealth;
