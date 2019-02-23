@@ -5,15 +5,16 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:padding="18dp"
     android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/taskLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/task_style">
 
         <qihaoooooo.kyoho.view.SquareImageView
             android:id="@+id/taskIcon"
@@ -39,6 +40,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
                 android:text="Task description"
+                android:textColor="@color/textBlack"
                 android:textSize="@dimen/taskDescSize" />
 
             <qihaoooooo.kyoho.view.PixelTextView
@@ -48,7 +50,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:text="420 minutes left"
-                android:textStyle="bold"
+                android:textColor="@color/textGray"
                 android:textSize="@dimen/taskTimeLeftSize" />
 
         </RelativeLayout>

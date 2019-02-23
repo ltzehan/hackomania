@@ -9,109 +9,139 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="@color/colorMainUI">
+        android:layout_height="wrap_content">
 
-        <qihaoooooo.kyoho.view.SquareImageView
-            android:id="@+id/userIcon"
-            android:layout_width="@dimen/userIconHeight"
-            android:layout_height="@dimen/userIconHeight"
-            android:scaleType="centerInside"
-            android:src="@drawable/turtleatbeach"/>
-
-        <LinearLayout
-            android:id="@+id/barLabels"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/userIconHeight"
-            android:layout_marginLeft="8dp"
-            android:layout_toEndOf="@id/userIcon"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <qihaoooooo.kyoho.view.SquareImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="@dimen/valueBarIconPadding"
-                android:src="@drawable/health" />
-
-            <qihaoooooo.kyoho.view.SquareImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="@dimen/valueBarIconPadding"
-                android:src="@drawable/sword" />
-
-            <qihaoooooo.kyoho.view.SquareImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="@dimen/valueBarIconPadding"
-                android:src="@drawable/sword" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/userIconHeight"
-            android:layout_toEndOf="@id/barLabels"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_alignTop="@id/userPanel"
+            android:layout_alignBottom="@id/userPanel"
+            android:src="@drawable/brickwall"/>
 
-            <qihaoooooo.kyoho.view.ValueBar
-                android:id="@+id/healthBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:paddingBottom="@dimen/valueBarVerticalPadding"
-                android:paddingTop="@dimen/valueBarVerticalPadding" />
+        <LinearLayout
+            android:id="@+id/userPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-            <qihaoooooo.kyoho.view.ValueBar
-                android:id="@+id/attackBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:paddingBottom="@dimen/valueBarVerticalPadding"
-                android:paddingTop="@dimen/valueBarVerticalPadding" />
+            <qihaoooooo.kyoho.view.SquareImageView
+                android:id="@+id/userIcon"
+                android:layout_width="@dimen/userIconHeight"
+                android:layout_height="@dimen/userIconHeight"
+                android:scaleType="centerInside"
+                android:src="@drawable/turtleatbeach"/>
 
-            <qihaoooooo.kyoho.view.ValueBar
-                android:id="@+id/expBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
+            <LinearLayout
+                android:id="@+id/barLabels"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/userIconHeight"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_toEndOf="@id/userIcon"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <qihaoooooo.kyoho.view.SquareImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/valueBarIconPadding"
+                    android:src="@drawable/health" />
+
+                <qihaoooooo.kyoho.view.SquareImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/valueBarIconPadding"
+                    android:src="@drawable/sword" />
+
+                <qihaoooooo.kyoho.view.SquareImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/valueBarIconPadding"
+                    android:src="@drawable/sword" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:paddingBottom="@dimen/valueBarVerticalPadding"
-                android:paddingTop="@dimen/valueBarVerticalPadding" />
+                android:layout_height="@dimen/userIconHeight"
+                android:layout_toEndOf="@id/barLabels"
+                android:orientation="vertical">
+
+                <qihaoooooo.kyoho.view.ValueBar
+                    android:id="@+id/healthBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="@dimen/valueBarVerticalPadding"
+                    android:paddingTop="@dimen/valueBarVerticalPadding" />
+
+                <qihaoooooo.kyoho.view.ValueBar
+                    android:id="@+id/attackBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="@dimen/valueBarVerticalPadding"
+                    android:paddingTop="@dimen/valueBarVerticalPadding" />
+
+                <qihaoooooo.kyoho.view.ValueBar
+                    android:id="@+id/expBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="@dimen/valueBarVerticalPadding"
+                    android:paddingTop="@dimen/valueBarVerticalPadding" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/bossContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2">
 
-        <qihaoooooo.kyoho.view.ValueBar
-            android:id="@+id/bossHealthBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bossBarHeight"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="16dp" />
-        
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/bossHealthBar"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/placeholder"/>
+            android:layout_alignTop="@id/bossContainer"
+            android:layout_alignBottom="@id/bossContainer"
+            android:scaleType="centerCrop"
+            android:src="@drawable/castlewall"/>
+
+        <RelativeLayout
+            android:id="@+id/bossContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <qihaoooooo.kyoho.view.ValueBar
+                android:id="@+id/bossHealthBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bossBarHeight"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/bossHealthBar"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/placeholder"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -121,7 +151,9 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:scrollbars="none"
-        android:overScrollMode="never"/>
+        android:overScrollMode="never"
+        android:paddingTop="12dp"
+        android:background="@drawable/brickwall"/>
 
     <qihaoooooo.kyoho.view.PixelTextView
         android:id="@+id/noTaskTextView"
@@ -131,6 +163,7 @@
         android:visibility="gone"
         android:gravity="center"
         android:textSize="@dimen/noTasksTextSize"
-        android:text="No tasks left to do!" />
+        android:text="No tasks left to do!"
+        android:background="@drawable/placeholder"/>
 
 </LinearLayout>
