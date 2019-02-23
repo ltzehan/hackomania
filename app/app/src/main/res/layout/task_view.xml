@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="18dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/taskLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <qihaoooooo.kyoho.view.SquareImageView
+            android:id="@+id/taskIcon"
+            android:layout_width="@dimen/taskIconHeight"
+            android:layout_height="@dimen/taskIconHeight"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/placeholder"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/taskIconHeight"
+            android:layout_weight="1"
+            android:layout_margin="16dp">
+
+            <TextView
+                android:id="@+id/taskDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:text="Task description"
+                android:textSize="@dimen/taskDescSize" />
+
+            <TextView
+                android:id="@+id/taskTimeLeft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:text="420 minutes left"
+                android:textStyle="bold"
+                android:textSize="@dimen/taskTimeLeftSize" />
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:layout_width="@dimen/taskDoneWidth"
+            android:layout_height="@dimen/taskIconHeight"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/placeholder"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

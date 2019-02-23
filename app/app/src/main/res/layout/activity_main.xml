@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:translationZ="12dp">
+        android:background="@color/colorMainUI">
 
         <qihaoooooo.kyoho.view.SquareImageView
             android:id="@+id/userIcon"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="@dimen/userIconHeight"
+            android:layout_height="@dimen/userIconHeight"
             android:scaleType="centerInside"
             android:src="@drawable/placeholder"/>
 
         <LinearLayout
             android:id="@+id/barLabels"
             android:layout_width="wrap_content"
-            android:layout_height="96dp"
+            android:layout_height="@dimen/userIconHeight"
             android:layout_marginStart="18dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="12dp"
             android:orientation="vertical"
             android:gravity="right"
             android:layout_toEndOf="@id/userIcon">
 
-            <qihaoooooo.kyoho.view.ValueBarTextView
+            <qihaoooooo.kyoho.view.PixelFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Health"/>
 
-            <qihaoooooo.kyoho.view.ValueBarTextView
+            <qihaoooooo.kyoho.view.PixelFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Attack"/>
 
-            <qihaoooooo.kyoho.view.ValueBarTextView
+            <qihaoooooo.kyoho.view.PixelFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -54,7 +55,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="@dimen/userIconHeight"
             android:orientation="vertical"
             android:layout_toEndOf="@id/barLabels">
 
@@ -64,8 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"/>
+                android:paddingTop="@dimen/valueBarVerticalPadding"
+                android:paddingBottom="@dimen/valueBarVerticalPadding"/>
 
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/attackBar"
@@ -73,8 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"/>
+                android:paddingTop="@dimen/valueBarVerticalPadding"
+                android:paddingBottom="@dimen/valueBarVerticalPadding"/>
 
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/expBar"
@@ -82,11 +83,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"/>
+                android:paddingTop="@dimen/valueBarVerticalPadding"
+                android:paddingBottom="@dimen/valueBarVerticalPadding"/>
 
         </LinearLayout>
 
     </RelativeLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/bossContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <qihaoooooo.kyoho.view.ValueBar
+            android:id="@+id/bossHealthBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bossBarHeight"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="16dp"/>
+        
+        <ImageView
+            android:layout_width="@dimen/bossSpriteHeight"
+            android:layout_height="@dimen/bossSpriteHeight"
+            android:layout_below="@id/bossHealthBar"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"/>
+
+    </RelativeLayout>
+    
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/taskRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:scrollbars="none"/>
+
+</LinearLayout>
