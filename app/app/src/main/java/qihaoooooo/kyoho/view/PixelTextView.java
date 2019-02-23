@@ -20,11 +20,9 @@ public class PixelTextView extends android.support.v7.widget.AppCompatTextView {
         styleText();
     }
 
-    // set colour and font
     private void styleText() {
-        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/BodgeR.ttf");
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/BodgeB.ttf");
         setTypeface(font, Typeface.NORMAL);
-        setTextColor(Color.WHITE);
     }
 
 }

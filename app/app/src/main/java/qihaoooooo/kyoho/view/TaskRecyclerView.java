@@ -3,11 +3,13 @@ package qihaoooooo.kyoho.view;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class TaskRecyclerView extends RecyclerView {
 
     private View noTaskTextView;
+    private boolean noTasks;
 
     public TaskRecyclerView(Context context) {
         super(context);
@@ -24,33 +26,38 @@ public class TaskRecyclerView extends RecyclerView {
     private AdapterDataObserver noTaskObserver = new AdapterDataObserver() {
 
         @Override
-        public void onChanged() {
-            Adapter<?> adapter =  getAdapter();
-            if(adapter != null && noTaskTextView != null) {
-                if(adapter.getItemCount() == 0) {
-                    noTaskTextView.setVisibility(View.VISIBLE);
-                    TaskRecyclerView.this.setVisibility(View.GONE);
-                }
-                else {
-                    noTaskTextView.setVisibility(View.GONE);
-                    TaskRecyclerView.this.setVisibility(View.VISIBLE);
-                }
-            }
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            super.onItemRangeInserted(positionStart, itemCount);
 
+            if (noTasks) {
+                noTaskTextView.setVisibility(View.GONE);
+                TaskRecyclerView.this.setVisibility(View.VISIBLE);
+
+                noTasks = false;
+            }
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            super.onItemRangeRemoved(positionStart, itemCount);
+
+            Adapter<?> adapter = getAdapter();
+
+            if (adapter != null && adapter.getItemCount() == 0) {
+                noTaskTextView.setVisibility(View.VISIBLE);
+                TaskRecyclerView.this.setVisibility(View.GONE);
+
+                noTasks = true;
+            }
         }
     };
-
-
 
     @Override
     public void setAdapter(Adapter adapter) {
         super.setAdapter(adapter);
 
-        if(adapter != null) {
-            adapter.registerAdapterDataObserver(noTaskObserver);
-        }
+        adapter.registerAdapterDataObserver(noTaskObserver);
 
-        noTaskObserver.onChanged();
     }
 
     public void setNoTaskTextView(View noTaskTextView) {

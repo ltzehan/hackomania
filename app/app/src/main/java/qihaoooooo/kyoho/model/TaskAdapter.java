@@ -1,6 +1,7 @@
 package qihaoooooo.kyoho.model;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int i) {
+        final int pos = i;
         Task t = tasks.get(i);
 
         // TODO integrate icon and time
         // holder.taskIcon.setImageIcon();
         holder.taskDesc.setText(t.getTitle());
         holder.taskTimeLeft.setText(t.getTimeLeft());
+        holder.taskDoneCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tasks.remove(pos);
+                notifyItemRemoved(pos);
+                notifyItemRangeChanged(pos, tasks.size());
+            }
+        });
     }
 
     @Override
@@ -47,6 +57,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         public SquareImageView taskIcon;
         public TextView taskDesc;
         public TextView taskTimeLeft;
+        public SquareImageView taskDoneCheck;
 
         public TaskViewHolder(View v) {
             super(v);
@@ -54,6 +65,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             taskIcon = (SquareImageView) v.findViewById(R.id.taskIcon);
             taskDesc = (TextView) v.findViewById(R.id.taskDesc);
             taskTimeLeft = (TextView) v.findViewById(R.id.taskTimeLeft);
+            taskDoneCheck = (SquareImageView) v.findViewById(R.id.taskDoneCheck);
         }
     }
 

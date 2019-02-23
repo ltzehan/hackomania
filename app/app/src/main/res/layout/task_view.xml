@@ -28,9 +28,11 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/taskIconHeight"
             android:layout_weight="2"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:layout_margin="16dp">
 
-            <TextView
+            <qihaoooooo.kyoho.view.PixelTextView
                 android:id="@+id/taskDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +41,7 @@
                 android:text="Task description"
                 android:textSize="@dimen/taskDescSize" />
 
-            <TextView
+            <qihaoooooo.kyoho.view.PixelTextView
                 android:id="@+id/taskTimeLeft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,6 +54,7 @@
         </RelativeLayout>
 
         <qihaoooooo.kyoho.view.SquareImageView
+            android:id="@+id/taskDoneCheck"
             android:layout_width="@dimen/taskDoneWidth"
             android:layout_height="@dimen/taskDoneWidth"
             android:layout_margin="16dp"
