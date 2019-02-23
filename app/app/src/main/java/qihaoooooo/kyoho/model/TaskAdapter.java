@@ -1,5 +1,6 @@
 package qihaoooooo.kyoho.model;
 
+import android.graphics.drawable.Icon;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,12 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import qihaoooooo.kyoho.R;
 import qihaoooooo.kyoho.view.SquareImageView;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
+    private final ArrayList<String> iconNames = new ArrayList<>(Arrays.asList("pills", "pyramid", "exercise", "hospital", "syringe"));
+    private final ArrayList<Integer> iconResource = new ArrayList<>(Arrays.asList(1,2));
 
     private List<Task> tasks;
 
@@ -25,10 +31,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         final int pos = i;
         Task t = tasks.get(i);
 
-        // TODO integrate icon and time
-        // holder.taskIcon.setImageIcon();
+        // TODO integrate icon
+        holder.taskIcon.setImageResource(getResId(t.getImageId(), R.drawable.class));
         holder.taskDesc.setText(t.getTitle());
-        holder.taskTimeLeft.setText("CHANGE THIS");
+        holder.taskTimeLeft.setText("Expires in <time>");
         holder.taskDoneCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +72,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             taskDesc = (TextView) v.findViewById(R.id.taskDesc);
             taskTimeLeft = (TextView) v.findViewById(R.id.taskTimeLeft);
             taskDoneCheck = (SquareImageView) v.findViewById(R.id.taskDoneCheck);
+        }
+    }
+
+    private static int getResId(String resName, Class<?> c) {
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 

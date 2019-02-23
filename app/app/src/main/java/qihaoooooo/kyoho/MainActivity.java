@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     // value bars
     private ValueBar healthBar;
     private ValueBar attackBar;
-    private ValueBar expBar;
     private ValueBar bossBar;
+
+    private TextView expTextView;
 
     public DBHelper myDB;
 
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         super.onCreate(savedInstanceState);
+
+        hideStatusBar();
         setContentView(R.layout.activity_main);
 
         //TEST
@@ -57,11 +62,16 @@ public class MainActivity extends AppCompatActivity {
 
         healthBar = findViewById(R.id.healthBar);
         attackBar = findViewById(R.id.attackBar);
-        expBar = findViewById(R.id.expBar);
         bossBar = findViewById(R.id.bossHealthBar);
+        expTextView = findViewById(R.id.expTextView);
+
+        healthBar.setBarProp(100,100);
+        attackBar.setBarProp(20, 5);
+        bossBar.setBarProp(1000, 1000);
 
         // TODO get tasks from server
         // tasks = serverHandler.getTaskList();
+
         // tasks = new ArrayList<>();
         tasks = myDB.getAllTasks();
         tasks.add(new Task("Test",10,"pyramid.png"));
@@ -79,8 +89,24 @@ public class MainActivity extends AppCompatActivity {
 
         taskLayoutManager = new LinearLayoutManager(this);
         taskRecycleView.setLayoutManager(taskLayoutManager);
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        hideStatusBar();
+    }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        hideStatusBar();
+    }
+
+    private void hideStatusBar() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
 
 }
