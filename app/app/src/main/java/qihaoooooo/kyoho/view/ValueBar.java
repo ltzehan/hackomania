@@ -3,6 +3,7 @@ package qihaoooooo.kyoho.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -62,7 +63,8 @@ public class ValueBar extends RelativeLayout {
     }
 
     private void update() {
-        fill = (int) (1 - (float) currentValue / maxValue) * 10000;
+        fill = (int) ((currentValue / (float) maxValue) * 10000);
+        Log.e("fd", "maxValue = " + maxValue + ", currentValue = " + currentValue + ", fill = " + fill);
     }
 
 }
