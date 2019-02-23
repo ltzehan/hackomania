@@ -25,7 +25,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         final int pos = i;
         Task t = tasks.get(i);
 
-        // TODO integrate icon and time
+        // TODO integrate icon
         // holder.taskIcon.setImageIcon();
         holder.taskDesc.setText(t.getTitle());
         holder.taskTimeLeft.setText(t.getTimeLeft());

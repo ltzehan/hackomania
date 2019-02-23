@@ -14,10 +14,11 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_alignTop="@id/userPanel"
             android:layout_alignBottom="@id/userPanel"
-            android:src="@drawable/brickwall"/>
+            android:layout_alignTop="@id/userPanel"
+            android:scaleType="centerCrop"
+            android:src="@drawable/brickwall"
+            android:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/userPanel"
@@ -74,30 +75,59 @@
 
                 <qihaoooooo.kyoho.view.ValueBar
                     android:id="@+id/healthBar"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingBottom="@dimen/valueBarVerticalPadding"
-                    android:paddingTop="@dimen/valueBarVerticalPadding" />
+                    android:paddingTop="@dimen/valueBarVerticalPadding">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/progressbar_small" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/clip"
+                        android:translationZ="20dp"/>
+
+                </qihaoooooo.kyoho.view.ValueBar>
 
                 <qihaoooooo.kyoho.view.ValueBar
                     android:id="@+id/attackBar"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:paddingBottom="@dimen/valueBarVerticalPadding"
-                    android:paddingTop="@dimen/valueBarVerticalPadding" />
+                    android:paddingTop="@dimen/valueBarVerticalPadding">
 
-                <qihaoooooo.kyoho.view.ValueBar
-                    android:id="@+id/expBar"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/progressbar_small" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/progressbar_red"
+                        android:translationZ="20dp"/>
+
+                </qihaoooooo.kyoho.view.ValueBar>
+
+                <qihaoooooo.kyoho.view.PixelTextView
+                    android:id="@+id/expTextView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:paddingBottom="@dimen/valueBarVerticalPadding"
-                    android:paddingTop="@dimen/valueBarVerticalPadding" />
+                    android:gravity="right|center_vertical"
+                    android:textSize="18dp"
+                    android:textColor="@android:color/white"
+                    android:text="0"/>
 
             </LinearLayout>
 
@@ -125,12 +155,26 @@
 
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/bossHealthBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/bossBarHeight"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginLeft="72dp"
+                android:layout_marginRight="72dp"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progressbar_large" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/progressbar_largered"
+                    android:translationZ="20dp"/>
+
+            </qihaoooooo.kyoho.view.ValueBar>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -139,7 +183,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_margin="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/placeholder"/>
+                android:src="@drawable/kyoho"/>
 
         </RelativeLayout>
 

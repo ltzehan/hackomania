@@ -3,32 +3,43 @@ package qihaoooooo.kyoho.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-// TODO extend ProgressBar
+public class ValueBar extends RelativeLayout {
 
-public class ValueBar extends ProgressBar {
+    private ImageView progressBar;
 
     private int maxValue;
     private int currentValue;
 
+    private int fill;
+
     public ValueBar(Context context) {
         super(context);
-        init(100, 100);
     }
 
     public ValueBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(100, 100);
+    }
+
+    public ValueBar(final Context context, final AttributeSet attrs, final int defStyle) {
+        super(context, attrs, defStyle);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        progressBar = (ImageView) this.getChildAt(0);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        progressBar.getDrawable().setLevel(fill);
     }
 
-    // bad flow it'll work for now
-    public void init(int maxValue, int currentValue) {
+    public void setBarProp(int maxValue, int currentValue) {
         this.maxValue = maxValue;
         this.currentValue = currentValue;
         update();
@@ -36,17 +47,22 @@ public class ValueBar extends ProgressBar {
 
     public void decrValue(int v) {
         currentValue -= v;
+        if (currentValue < 0) {
+            currentValue = 0;
+        }
         update();
     }
 
     public void incrValue(int v) {
         currentValue += v;
+        if (currentValue > maxValue) {
+            currentValue = maxValue;
+        }
         update();
     }
 
     private void update() {
-        int fill = (int) ((float) currentValue / maxValue) * 100;
-        super.setProgress(fill);
+        fill = (int) (1 - (float) currentValue / maxValue) * 10000;
     }
 
 }

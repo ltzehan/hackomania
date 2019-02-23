@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
     // value bars
     private ValueBar healthBar;
     private ValueBar attackBar;
-    private ValueBar expBar;
     private ValueBar bossBar;
+
+    private TextView expTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +40,19 @@ public class MainActivity extends AppCompatActivity {
 
         healthBar = findViewById(R.id.healthBar);
         attackBar = findViewById(R.id.attackBar);
-        expBar = findViewById(R.id.expBar);
         bossBar = findViewById(R.id.bossHealthBar);
+        expTextView = findViewById(R.id.expTextView);
+
+        healthBar.setBarProp(100,100);
+        attackBar.setBarProp(20, 5);
+        bossBar.setBarProp(1000, 1000);
 
         // TODO get tasks from server
         // tasks = serverHandler.getTaskList();
         tasks = new ArrayList<>();
         tasks.add(new Task("Test",10000,20));
+        tasks.add(new Task("boop", 4206969, 22222));
+        tasks.add(new Task("boop", 4206969, 22222));
         tasks.add(new Task("boop", 4206969, 22222));
 
         //
