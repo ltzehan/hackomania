@@ -3,6 +3,7 @@
 
     <item name="userIconHeight" type="dimen">96dp</item>
     <item name="valueBarVerticalPadding" type="dimen">8dp</item>
+    <item name="valueBarIconPadding" type="dimen">2dp</item>
     <item name="taskIconHeight" type="dimen">72dp</item>
     <item name="taskTextPadding" type="dimen">12dp</item>
     <item name="taskDescSize" type="dimen">18dp</item>
@@ -10,5 +11,6 @@
     <item name="taskDoneWidth" type="dimen">42dp</item>
     <item name="bossBarHeight" type="dimen">12dp</item>
     <item name="bossSpriteHeight" type="dimen">120dp</item>
+
 
 </resources>

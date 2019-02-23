@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp"
+        android:padding="16dp"
         android:background="@color/colorMainUI">
 
         <qihaoooooo.kyoho.view.SquareImageView
@@ -18,38 +18,37 @@
             android:layout_width="@dimen/userIconHeight"
             android:layout_height="@dimen/userIconHeight"
             android:scaleType="centerInside"
-            android:src="@drawable/placeholder"/>
+            android:src="@drawable/turtle"/>
 
         <LinearLayout
             android:id="@+id/barLabels"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/userIconHeight"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="12dp"
             android:orientation="vertical"
             android:gravity="right"
+            android:layout_marginRight="8dp"
             android:layout_toEndOf="@id/userIcon">
 
-            <qihaoooooo.kyoho.view.PixelFontTextView
-                android:layout_width="wrap_content"
+            <qihaoooooo.kyoho.view.SquareImageView
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Health"/>
+                android:padding="@dimen/valueBarIconPadding"
+                android:src="@drawable/health"/>
 
-            <qihaoooooo.kyoho.view.PixelFontTextView
-                android:layout_width="wrap_content"
+            <qihaoooooo.kyoho.view.SquareImageView
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Attack"/>
+                android:padding="@dimen/valueBarIconPadding"
+                android:src="@drawable/sword"/>
 
-            <qihaoooooo.kyoho.view.PixelFontTextView
-                android:layout_width="wrap_content"
+            <qihaoooooo.kyoho.view.SquareImageView
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="EXP"/>
+                android:padding="@dimen/valueBarIconPadding"
+                android:src="@drawable/sword"/>
 
         </LinearLayout>
 
