@@ -18,7 +18,7 @@
             android:layout_width="@dimen/userIconHeight"
             android:layout_height="@dimen/userIconHeight"
             android:scaleType="centerInside"
-            android:src="@drawable/turtle"/>
+            android:src="@drawable/turtleatbeach"/>
 
         <LinearLayout
             android:id="@+id/barLabels"
@@ -102,22 +102,35 @@
             android:layout_height="@dimen/bossBarHeight"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp" />
         
         <ImageView
-            android:layout_width="@dimen/bossSpriteHeight"
-            android:layout_height="@dimen/bossSpriteHeight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@id/bossHealthBar"
             android:layout_centerHorizontal="true"
-            android:layout_margin="8dp"/>
+            android:layout_margin="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder"/>
 
     </RelativeLayout>
-    
-    <android.support.v7.widget.RecyclerView
+
+    <qihaoooooo.kyoho.view.TaskRecyclerView
         android:id="@+id/taskRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:scrollbars="none"/>
+        android:scrollbars="none"
+        android:overScrollMode="never"/>
+
+    <qihaoooooo.kyoho.view.PixelTextView
+        android:id="@+id/noTaskTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="@dimen/noTasksTextSize"
+        android:text="No tasks left to do!" />
 
 </LinearLayout>
