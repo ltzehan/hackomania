@@ -13,6 +13,15 @@ public class Task {
     private String id;
     private String imageId;
 
+    public Task(String title, boolean completed, boolean expired, int attack, String id, String imageId) {
+        this.title = title;
+        this.completed = completed;
+        this.expired = expired;
+        this.attack = attack;
+        this.id = id;
+        this.imageId = imageId;
+    }
+
     public String getImageId() {
         return imageId;
     }

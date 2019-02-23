@@ -2,11 +2,13 @@ package qihaoooooo.kyoho;
 
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView expTextView;
 
-    public DBHelper myDB;
+    public static DBHelper myDB;
+    public static Boss currentBoss;
+    public static User user;
+
+    // Funky double click stuff plz ignore
+    private long mLastClickTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
         //TEST
         myDB = new DBHelper(this);
-        myDB.reset();
-
-        ArrayList<Task> testSet = HerokuHelper.getTasks();
-        for(Task t: testSet){
-            System.out.println(t.getTitle());
-            myDB.newTask(t);
-        }
+        //myDB.reset();
+//        ArrayList<Task> testSet = HerokuHelper.getTasks();
+//        for(Task t: testSet){
+//            System.out.println(t.getTitle());
+//            myDB.newTask(t);
+//        }
         //TEST
+
+        // Initialise boss and user
+        user = myDB.getUser();
+        currentBoss = myDB.getCurrentBoss();
 
         healthBar = findViewById(R.id.healthBar);
         attackBar = findViewById(R.id.attackBar);
@@ -74,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
         // tasks = new ArrayList<>();
         tasks = myDB.getAllTasks();
-        tasks.add(new Task("Test",10,"pyramid.png"));
-        tasks.add(new Task("boop", 8, "pills.png"));
+        myDB.newTask(new Task("Doot",10,"pyramid"));
+        tasks.add(new Task("Test",10,"pyramid"));
+        tasks.add(new Task("boop", 8, "pills"));
 
         //
         //  Set up RecyclerView for task list
@@ -89,6 +100,41 @@ public class MainActivity extends AppCompatActivity {
 
         taskLayoutManager = new LinearLayoutManager(this);
         taskRecycleView.setLayoutManager(taskLayoutManager);
+
+        RelativeLayout bossLayout = findViewById(R.id.bossContainer);
+
+        bossLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // mis-clicking prevention, using threshold of 1000 ms
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
+
+                if(user.getAttack()>0) {
+                    user.incrementAttack(-1);
+                    currentBoss.decrementHealth();
+
+                    if(currentBoss.getHealth()<=0) {
+                        user.incrementExp(currentBoss.getExpValue());
+                        currentBoss.setAlive(false);
+                        Boss newBoss = new Boss("Boss", currentBoss.getMaxHealth()+10,
+                                currentBoss.getExpValue()+5);
+                        myDB.updateBoss(currentBoss);
+                        myDB.newBoss(newBoss);
+
+                        currentBoss = newBoss;
+                    }
+
+                    myDB.updateUser(user);
+                    myDB.updateBoss(currentBoss);
+
+                    System.out.println("USERRRRR"+user.getAttack());
+                    System.out.println("BOSSSS"+currentBoss.getHealth());
+                }
+            }
+        });
 
     }
 

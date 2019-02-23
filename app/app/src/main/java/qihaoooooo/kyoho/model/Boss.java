@@ -19,6 +19,8 @@ public class Boss {
         return health;
     }
 
+    public void decrementHealth() {this.health--;}
+
     public void setHealth(int health) {
         this.health = health;
     }
