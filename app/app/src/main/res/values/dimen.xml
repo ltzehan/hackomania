@@ -11,5 +11,6 @@
     <item name="taskDoneWidth" type="dimen">36dp</item>
     <item name="bossBarHeight" type="dimen">24dp</item>
     <item name="noTasksTextSize" type="dimen">24dp</item>
+    <item name="logDividerHeight" type="dimen">18dp</item>
 
 </resources>

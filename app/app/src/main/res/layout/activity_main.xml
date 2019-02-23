@@ -63,7 +63,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:padding="@dimen/valueBarIconPadding"
-                    android:src="@drawable/sword" />
+                    android:src="@drawable/exp" />
 
             </LinearLayout>
 
@@ -135,6 +135,12 @@
 
     </RelativeLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/logDividerHeight"
+        android:scaleType="centerCrop"
+        android:src="@drawable/log"/>
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -188,6 +194,12 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/logDividerHeight"
+        android:scaleType="centerCrop"
+        android:src="@drawable/log"/>
 
     <qihaoooooo.kyoho.view.TaskRecyclerView
         android:id="@+id/taskRecyclerView"
