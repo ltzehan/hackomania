@@ -2,6 +2,7 @@ package qihaoooooo.kyoho.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.ClipDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
@@ -37,7 +38,6 @@ public class ValueBar extends RelativeLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        progressBar.getDrawable().setLevel(fill);
     }
 
     public void setBarProp(int maxValue, int currentValue) {
@@ -64,7 +64,8 @@ public class ValueBar extends RelativeLayout {
 
     private void update() {
         fill = (int) ((currentValue / (float) maxValue) * 10000);
-        Log.e("fd", "maxValue = " + maxValue + ", currentValue = " + currentValue + ", fill = " + fill);
+        progressBar.getDrawable().setLevel(fill);
+        progressBar.invalidate();
     }
 
 }
