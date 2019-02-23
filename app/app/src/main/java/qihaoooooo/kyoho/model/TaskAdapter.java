@@ -28,7 +28,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         // TODO integrate icon and time
         // holder.taskIcon.setImageIcon();
         holder.taskDesc.setText(t.getTitle());
-        holder.taskTimeLeft.setText(t.getTimeLeft());
+        holder.taskTimeLeft.setText("CHANGE THIS");
         holder.taskDoneCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
