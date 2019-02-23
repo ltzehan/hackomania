@@ -19,12 +19,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/placeholder"/>
+            android:src="@drawable/clipboard"/>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="@dimen/taskIconHeight"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_margin="16dp">
 
             <TextView
@@ -48,13 +48,11 @@
 
         </RelativeLayout>
 
-        <ImageButton
+        <qihaoooooo.kyoho.view.SquareImageView
             android:layout_width="@dimen/taskDoneWidth"
-            android:layout_height="@dimen/taskIconHeight"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/placeholder"/>
+            android:layout_height="@dimen/taskDoneWidth"
+            android:layout_margin="16dp"
+            android:src="@drawable/checkmark" />
 
     </LinearLayout>
 

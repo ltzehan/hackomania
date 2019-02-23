@@ -24,39 +24,39 @@
             android:id="@+id/barLabels"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/userIconHeight"
-            android:orientation="vertical"
-            android:gravity="right"
-            android:layout_marginRight="8dp"
-            android:layout_toEndOf="@id/userIcon">
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@id/userIcon"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <qihaoooooo.kyoho.view.SquareImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="@dimen/valueBarIconPadding"
-                android:src="@drawable/health"/>
+                android:src="@drawable/health" />
 
             <qihaoooooo.kyoho.view.SquareImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="@dimen/valueBarIconPadding"
-                android:src="@drawable/sword"/>
+                android:src="@drawable/sword" />
 
             <qihaoooooo.kyoho.view.SquareImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="@dimen/valueBarIconPadding"
-                android:src="@drawable/sword"/>
+                android:src="@drawable/sword" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/userIconHeight"
-            android:orientation="vertical"
-            android:layout_toEndOf="@id/barLabels">
+            android:layout_toEndOf="@id/barLabels"
+            android:orientation="vertical">
 
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/healthBar"
@@ -64,8 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingTop="@dimen/valueBarVerticalPadding"
-                android:paddingBottom="@dimen/valueBarVerticalPadding"/>
+                android:paddingBottom="@dimen/valueBarVerticalPadding"
+                android:paddingTop="@dimen/valueBarVerticalPadding" />
 
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/attackBar"
@@ -73,8 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingTop="@dimen/valueBarVerticalPadding"
-                android:paddingBottom="@dimen/valueBarVerticalPadding"/>
+                android:paddingBottom="@dimen/valueBarVerticalPadding"
+                android:paddingTop="@dimen/valueBarVerticalPadding" />
 
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/expBar"
@@ -82,8 +82,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingTop="@dimen/valueBarVerticalPadding"
-                android:paddingBottom="@dimen/valueBarVerticalPadding"/>
+                android:paddingBottom="@dimen/valueBarVerticalPadding"
+                android:paddingTop="@dimen/valueBarVerticalPadding" />
 
         </LinearLayout>
 

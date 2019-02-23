@@ -8,7 +8,7 @@
     <item name="taskTextPadding" type="dimen">12dp</item>
     <item name="taskDescSize" type="dimen">18dp</item>
     <item name="taskTimeLeftSize" type="dimen">16dp</item>
-    <item name="taskDoneWidth" type="dimen">42dp</item>
+    <item name="taskDoneWidth" type="dimen">36dp</item>
     <item name="bossBarHeight" type="dimen">12dp</item>
     <item name="bossSpriteHeight" type="dimen">120dp</item>
 
