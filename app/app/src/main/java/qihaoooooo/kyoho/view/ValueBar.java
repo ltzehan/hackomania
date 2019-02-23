@@ -14,10 +14,12 @@ public class ValueBar extends ProgressBar {
 
     public ValueBar(Context context) {
         super(context);
+        init(100, 100);
     }
 
     public ValueBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(100, 100);
     }
 
     @Override
@@ -25,11 +27,11 @@ public class ValueBar extends ProgressBar {
         super.onDraw(canvas);
     }
 
+    // bad flow it'll work for now
     public void init(int maxValue, int currentValue) {
         this.maxValue = maxValue;
         this.currentValue = currentValue;
-
-
+        update();
     }
 
     public void decrValue(int v) {
@@ -43,7 +45,7 @@ public class ValueBar extends ProgressBar {
     }
 
     private void update() {
-        int fill = currentValue / maxValue;
+        int fill = (int) ((float) currentValue / maxValue) * 100;
         super.setProgress(fill);
     }
 
