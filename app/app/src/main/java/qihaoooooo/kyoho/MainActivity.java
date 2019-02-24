@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Task> currentTasks = myDB.getAllTasks();
         if(currentTasks.size()==0){
-            ArrayList<Task> testSet = HerokuHelper.getTasks();
+            ArrayList<Task> testSet = HerokuHelper.getTasks(HerokuHelper.API_URL_TASKS);
             for(Task t: testSet){
                 System.out.println(t.getTitle());
                 myDB.newTask(t);
@@ -168,7 +168,10 @@ public class MainActivity extends AppCompatActivity {
         noTaskTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO
+                ArrayList<Task> bonusTasks = HerokuHelper.getTasks(HerokuHelper.API_URL_TASKS_BONUS);
+                tasks.addAll(bonusTasks);
+                Log.e("asdf", "added tasks");
+                taskRecycleView.addedTasks();
             }
         });
 

@@ -3,6 +3,7 @@ package qihaoooooo.kyoho.view;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class TaskRecyclerView extends RecyclerView {
@@ -28,6 +29,7 @@ public class TaskRecyclerView extends RecyclerView {
         public void onItemRangeInserted(int positionStart, int itemCount) {
             super.onItemRangeInserted(positionStart, itemCount);
 
+            Log.e("fda", "called oninsert");
             if (noTasks) {
                 noTaskTextView.setVisibility(View.GONE);
                 TaskRecyclerView.this.setVisibility(View.VISIBLE);
@@ -50,6 +52,16 @@ public class TaskRecyclerView extends RecyclerView {
             }
         }
     };
+
+    public void addedTasks() {
+        Log.e("fda", "called oninsert");
+        if (noTasks) {
+            noTaskTextView.setVisibility(View.GONE);
+            TaskRecyclerView.this.setVisibility(View.VISIBLE);
+
+            noTasks = false;
+        }
+    }
 
     @Override
     public void setAdapter(Adapter adapter) {

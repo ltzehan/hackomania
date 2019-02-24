@@ -19,13 +19,14 @@ import qihaoooooo.kyoho.model.Task;
 import qihaoooooo.kyoho.model.User;
 
 public class HerokuHelper {
-    private static final String API_URL_TASKS = "http://immense-headland-53219.herokuapp.com/tasks";
+    public static final String API_URL_TASKS = "http://immense-headland-53219.herokuapp.com/tasks";
+    public static final String API_URL_TASKS_BONUS = "http://immense-headland-53219.herokuapp.com/tasks/bonus";
     private static final String API_URL_USER = "http://immense-headland-53219.herokuapp.com/user";
     private static final String API_URL_LEADERBOARD = "http://immense-headland-53219.herokuapp.com/leaderboard";
 
-    public static ArrayList<Task> getTasks(){
+    public static ArrayList<Task> getTasks(String url){
         ArrayList<Task> taskArrayList = new ArrayList<>();
-        String stringJSON = getRequest(API_URL_TASKS);
+        String stringJSON = getRequest(url);
 
         try{
             JSONArray tasksJSONArray = new JSONArray(stringJSON);
@@ -128,9 +129,5 @@ public class HerokuHelper {
         }
         System.out.println("STRING: "+requeststring);
         return requeststring;
-    }
-
-    public static void main(String[] args) {
-        getTasks();
     }
 }
