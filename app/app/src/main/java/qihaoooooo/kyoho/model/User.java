@@ -30,7 +30,7 @@ public class User {
 
     public void incrementAttack(int increment){
         int newAttack = this.attack +increment;
-        if (newAttack>30) this.attack = 30;
+        if (newAttack>20) this.attack = 20;
         else if (newAttack<0) this.attack = 0;
         else this.attack = newAttack;
     }

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     // value bars
     private ValueBar healthBar;
-    private ValueBar attackBar;
+    public static ValueBar attackBar;
     private ValueBar bossBar;
 
     private TextView expTextView;
@@ -56,15 +56,20 @@ public class MainActivity extends AppCompatActivity {
         hideStatusBar();
         setContentView(R.layout.activity_main);
 
-        //TEST
+
         myDB = new DBHelper(this);
-        //myDB.reset();
-//        ArrayList<Task> testSet = HerokuHelper.getTasks();
-//        for(Task t: testSet){
-//            System.out.println(t.getTitle());
-//            myDB.newTask(t);
-//        }
-        //TEST
+        // myDB.reset();
+
+        ArrayList<Task> currentTasks = myDB.getAllTasks();
+        if(currentTasks.size()==0){
+            ArrayList<Task> testSet = HerokuHelper.getTasks();
+            for(Task t: testSet){
+                System.out.println(t.getTitle());
+                myDB.newTask(t);
+            }
+        }
+
+
 
         // Initialise boss and user
         user = myDB.getUser();
@@ -74,19 +79,20 @@ public class MainActivity extends AppCompatActivity {
         attackBar = findViewById(R.id.attackBar);
         bossBar = findViewById(R.id.bossHealthBar);
         expTextView = findViewById(R.id.expTextView);
+        expTextView.setText(user.getExp()+"");
 
-        healthBar.setBarProp(100,100);
-        attackBar.setBarProp(20, 5);
-        bossBar.setBarProp(1000, 1000);
+        healthBar.setBarProp(100,user.getHealth());
+        attackBar.setBarProp(20, user.getAttack());
+        bossBar.setBarProp(currentBoss.getMaxHealth(), currentBoss.getHealth());
 
         // TODO get tasks from server
         // tasks = serverHandler.getTaskList();
 
         // tasks = new ArrayList<>();
         tasks = myDB.getAllTasks();
-        myDB.newTask(new Task("Doot",10,"pyramid"));
-        tasks.add(new Task("Test",10,"pyramid"));
-        tasks.add(new Task("boop", 8, "pills"));
+//        myDB.newTask(new Task("Doot",10,"pyramid"));
+//        tasks.add(new Task("Test",10,"pyramid"));
+//        tasks.add(new Task("boop", 8, "pills"));
 
         //
         //  Set up RecyclerView for task list
@@ -107,17 +113,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // mis-clicking prevention, using threshold of 1000 ms
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 250){
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
 
                 if(user.getAttack()>0) {
                     user.incrementAttack(-1);
+                    attackBar.decrValue(1);
                     currentBoss.decrementHealth();
+                    bossBar.decrValue(1);
 
                     if(currentBoss.getHealth()<=0) {
                         user.incrementExp(currentBoss.getExpValue());
+                        expTextView.setText(user.getExp()+"");
                         currentBoss.setAlive(false);
                         Boss newBoss = new Boss("Boss", currentBoss.getMaxHealth()+10,
                                 currentBoss.getExpValue()+5);
@@ -125,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         myDB.newBoss(newBoss);
 
                         currentBoss = newBoss;
+                        bossBar.setBarProp(currentBoss.getMaxHealth(), currentBoss.getHealth());
                     }
 
                     myDB.updateUser(user);

@@ -33,6 +33,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO " + USER_TABLE_NAME + " (username, health, exp, attack) VALUES " +
                 "('USER', 100, 0, 0)");
+        db.execSQL("INSERT INTO " + BOSS_TABLE_NAME + " (health, maxhealth, name, expvalue, alive) VALUES " +
+                "(10, 10, 'Kyoho', 10, 0)");
     }
 
     @Override
@@ -60,7 +62,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 "('USER', 100, 0, 0)");
         db.execSQL("INSERT INTO " + BOSS_TABLE_NAME + " (health, maxhealth, name, expvalue, alive) VALUES " +
                 "(30, 30, 'Kyoho', 10, 0)");
-        db.close();
     }
 
     public void updateUser(User user) {
@@ -174,7 +175,7 @@ public class DBHelper extends SQLiteOpenHelper {
             int maxhealth = Integer.parseInt(res.getString(res.getColumnIndex("maxhealth")));
             int expvalue = Integer.parseInt(res.getString(res.getColumnIndex("expvalue")));
 
-            boss = new Boss(name, maxhealth, expvalue);
+            boss = new Boss(health, maxhealth, expvalue, true, name);
             boss.setHealth(health);
         }
         db.close();

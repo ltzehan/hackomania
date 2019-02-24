@@ -46,6 +46,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 int attack = t.getAttack();
                 MainActivity.user.incrementAttack(attack);
                 MainActivity.myDB.updateUser(MainActivity.user);
+                MainActivity.attackBar.setBarProp(20, MainActivity.user.getAttack());
                 System.out.println("USERRRR"+MainActivity.user.getAttack());
 
                 notifyItemRemoved(pos);

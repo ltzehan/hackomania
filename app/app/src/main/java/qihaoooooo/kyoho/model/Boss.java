@@ -56,4 +56,12 @@ public class Boss {
         this.health = maxHealth;
         this.expValue = expValue;
     }
+
+    public Boss(int health, int maxHealth, int expValue, boolean alive, String name) {
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.expValue = expValue;
+        this.alive = alive;
+        this.name = name;
+    }
 }
