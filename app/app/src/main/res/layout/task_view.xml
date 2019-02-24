@@ -54,12 +54,39 @@
 
         </RelativeLayout>
 
-        <qihaoooooo.kyoho.view.SquareImageView
-            android:id="@+id/taskDoneCheck"
-            android:layout_width="@dimen/taskDoneWidth"
-            android:layout_height="@dimen/taskDoneWidth"
-            android:layout_margin="16dp"
-            android:src="@drawable/checkmark" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <qihaoooooo.kyoho.view.SquareImageView
+                android:id="@+id/taskDoneCheck"
+                android:layout_width="@dimen/taskDoneWidth"
+                android:layout_height="@dimen/taskDoneWidth"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/checkmark" />
+
+            <qihaoooooo.kyoho.view.PixelTextView
+                android:id="@+id/taskAttackTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:paddingTop="4dp"
+                android:textSize="18dp"
+                android:textColor="#AA2222"
+                android:text="1"/>
+
+            <qihaoooooo.kyoho.view.PixelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AA2222"
+                android:text="ATK"
+                android:textSize="10dp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

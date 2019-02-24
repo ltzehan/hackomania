@@ -162,6 +162,15 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
 
+            <qihaoooooo.kyoho.view.SquareImageView
+                android:id="@+id/rip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_centerHorizontal="true"
+                android:translationZ="20dp"
+                android:src="@drawable/grave"/>
+
             <qihaoooooo.kyoho.view.ValueBar
                 android:id="@+id/bossHealthBar"
                 android:layout_width="match_parent"
@@ -186,6 +195,7 @@
             </qihaoooooo.kyoho.view.ValueBar>
 
             <ImageView
+                android:id="@+id/bossImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/bossHealthBar"
@@ -226,7 +236,7 @@
             android:visibility="gone"
             android:gravity="center"
             android:textSize="@dimen/noTasksTextSize"
-            android:text="No tasks left to do!"
+            android:text="No tasks left to do!\n Ask Colin Mochrie for more!"
             android:background="@drawable/placeholder"/>
 
     </RelativeLayout>

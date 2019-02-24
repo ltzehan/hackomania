@@ -1,14 +1,11 @@
 package qihaoooooo.kyoho.model;
 
-import android.graphics.drawable.Icon;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,10 +29,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         final int pos = i;
         Task t = tasks.get(i);
 
-        // TODO integrate icon
-        holder.taskIcon.setImageResource(iconResource.get(iconNames.indexOf(t.getImageId())));
+        int index = iconNames.indexOf(t.getImageId());
+        holder.taskIcon.setImageResource(iconResource.get(index));
         holder.taskDesc.setText(t.getTitle());
-        holder.taskTimeLeft.setText("Expires in <time>");
+        holder.taskTimeLeft.setText("Daily task");
         holder.taskDoneCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +50,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 notifyItemRangeChanged(pos, tasks.size());
             }
         });
+        holder.taskAttackValue.setText("" + t.getAttack());
     }
 
     @Override
@@ -74,6 +72,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         public TextView taskDesc;
         public TextView taskTimeLeft;
         public SquareImageView taskDoneCheck;
+        public TextView taskAttackValue;
 
         public TaskViewHolder(View v) {
             super(v);
@@ -82,6 +81,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             taskDesc = (TextView) v.findViewById(R.id.taskDesc);
             taskTimeLeft = (TextView) v.findViewById(R.id.taskTimeLeft);
             taskDoneCheck = (SquareImageView) v.findViewById(R.id.taskDoneCheck);
+            taskAttackValue = (TextView) v.findViewById(R.id.taskAttackTextView);
         }
     }
 

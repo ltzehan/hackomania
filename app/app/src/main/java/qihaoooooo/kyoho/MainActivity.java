@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +24,8 @@ import qihaoooooo.kyoho.model.TaskAdapter;
 import qihaoooooo.kyoho.model.User;
 import qihaoooooo.kyoho.utils.DBHelper;
 import qihaoooooo.kyoho.utils.HerokuHelper;
+import qihaoooooo.kyoho.view.PixelTextView;
+import qihaoooooo.kyoho.view.SquareImageView;
 import qihaoooooo.kyoho.view.TaskRecyclerView;
 import qihaoooooo.kyoho.view.ValueBar;
 
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TaskRecyclerView taskRecycleView;
     private TaskRecyclerView.Adapter taskAdapter;
     private TaskRecyclerView.LayoutManager taskLayoutManager;
+    private PixelTextView noTaskTextView;
 
     private List<Task> tasks;
 
@@ -38,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
     private ValueBar bossBar;
 
     private TextView expTextView;
+
+    private SquareImageView rip;
+    private ImageView bossImage;
+    private Animation ripAnim;
+    private Animation yeetAnim;
+    private Animation slideAnim;
 
     public static DBHelper myDB;
     public static Boss currentBoss;
@@ -56,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         hideStatusBar();
         setContentView(R.layout.activity_main);
 
-
         myDB = new DBHelper(this);
         // myDB.reset();
 
@@ -69,7 +81,58 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        rip = findViewById(R.id.rip);
+        bossImage = findViewById(R.id.bossImage);
+        ripAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rip);
+        ripAnim.setAnimationListener(
+            new Animation.AnimationListener(){
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                    rip.setVisibility(View.VISIBLE);
+                }
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    rip.startAnimation(yeetAnim);
+                }
+            }
+        );
 
+        yeetAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.yeetus);
+        yeetAnim.setAnimationListener(
+            new Animation.AnimationListener(){
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                }
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    rip.setVisibility(View.INVISIBLE);
+                    bossImage.setVisibility(View.INVISIBLE);
+                    bossImage.startAnimation(slideAnim);
+                }
+            }
+        );
+
+        slideAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide);
+        slideAnim.setAnimationListener(
+                new Animation.AnimationListener(){
+                    @Override
+                    public void onAnimationStart(Animation arg0) {
+                        bossImage.setVisibility(View.VISIBLE);
+                    }
+                    @Override
+                    public void onAnimationRepeat(Animation arg0) {
+                    }
+                    @Override
+                    public void onAnimationEnd(Animation arg0) {
+                    }
+                }
+        );
 
         // Initialise boss and user
         user = myDB.getUser();
@@ -97,9 +160,17 @@ public class MainActivity extends AppCompatActivity {
         //
         //  Set up RecyclerView for task list
         //
+        noTaskTextView = (PixelTextView) findViewById(R.id.noTaskTextView);
         taskRecycleView = (TaskRecyclerView) findViewById(R.id.taskRecyclerView);
         taskRecycleView.setHasFixedSize(true);
-        taskRecycleView.setNoTaskTextView(findViewById(R.id.noTaskTextView));
+        taskRecycleView.setNoTaskTextView(noTaskTextView);
+
+        noTaskTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO
+            }
+        });
 
         taskAdapter = new TaskAdapter(tasks);
         taskRecycleView.setAdapter(taskAdapter);
@@ -125,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
                     bossBar.decrValue(1);
 
                     if(currentBoss.getHealth()<=0) {
+                        animBossKill();
+
                         user.incrementExp(currentBoss.getExpValue());
                         expTextView.setText(user.getExp()+"");
                         currentBoss.setAlive(false);
@@ -146,6 +219,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void animBossKill() {
+        int h = bossImage.getLayoutParams().height / 2;
+        rip.getLayoutParams().height = h;
+
+        rip.startAnimation(ripAnim);
     }
 
     @Override
